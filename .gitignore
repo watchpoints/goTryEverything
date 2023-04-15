@@ -1,15 +1,57 @@
-# Binaries for programs and plugins
+*~
+.vscode
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
 *.exe
-*.exe~
-*.dll
-*.so
-*.dylib
-
-# Test binary, built with `go test -c`
-*.test
-
-# Output of the go coverage tool, specifically when used with LiteIDE
 *.out
-
-# Dependency directories (remove the comment below to include it)
-# vendor/
+*.log
+*.temp
+*.xml
+*.log
+*.apk
+*.apk
+*.ap_
+  
+# Files for the Dalvik VM
+*.dex
+  
+# Java class files
+*.class
+  
+# Generated files
+*/bin/
+*/gen/
+*/out/
+# Intellij
+*.iml
+*/*.iml
+  
+# Keystore files
+#*.jks
+#gradle wrapper
+gradle/
+  
+#some local files
+*/.settings/
+*/.DS_Store
+.DS_Store
+*/.idea/
+.idea/
+# 目录
+client/
+__debug_bin
+*.log
+*.obj
+*.idb
+.vs
+.idea
+.exe
