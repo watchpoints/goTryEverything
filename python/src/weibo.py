@@ -158,6 +158,7 @@ def post_weibo(browser, content):
                                                ".woo-button-main.woo-button-flat.woo-button-primary.woo-button-m.woo-button-round.Tool_btn_2Eane")  # 双击按钮
     time.sleep(2)
     weitoutiao_send_btn.send_keys(Keys.SPACE)
+    time.sleep(3)
     print(r"push {content} succed")
 
 

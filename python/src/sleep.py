@@ -1,6 +1,7 @@
 import logging
 import weibo
 import os
+import toutiao
 
 
 def show_sleep():
@@ -8,3 +9,5 @@ def show_sleep():
     logging.info("22点打卡，关机睡觉，手机一定要放客厅")
     weibo.post_sleep_weibo()
     weibo.post_sleep_weibo()
+
+    toutiao.post_sleep_toutiao()  # easy sleep

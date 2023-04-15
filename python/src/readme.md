@@ -24,7 +24,15 @@ Google Chrome 113.0.5672.37 beta
 chromedriver --version
 ChromeDriver 113.0.5672.24 (65f30d4e8051264233c679c7cd3743679f15339d-refs/branch-heads/5672@{#243})
 
+### 奇迹提问4：
 
+selenium滑动到元素可见状态
+
+selenium——鼠标操作ActionChains：点击、滑动、拖动
+
+https://www.cnblogs.com/mini-monkey/p/12169030.html
+
+https://www.selenium.dev/documentation/webdriver/elements/finders/
 
 ### 奇迹提问3：
 
