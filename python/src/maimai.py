@@ -130,21 +130,23 @@ def loginWithCookies(browser, cookpath, url):
 
 
 # 今日头条：格言提醒
-def postWeiToutiao(browser, content):
+def post_maimai_msg(browser, content):
     print("postWeiToutiao begin")
     # load
-    browser.get("https://mp.toutiao.com/profile_v4/weitoutiao/publish")
+    browser.get("https://maimai.cn/web/feed_explore")
     time.sleep(8)
 
     # selenium控制鼠标下滑
     # 一共下滑十次，下滑一次停顿0.5s
-    for i in range(3):
-        browser.execute_script('window.scrollTo(0,-document.body.scrollHeight)')
-        time.sleep(0.5)
+    # for i in range(3):
+    #     browser.execute_script('window.scrollTo(0,-document.body.scrollHeight)')
+    #     time.sleep(0.5)
 
     # 填写内容
+    # <div >class ="inputPanel" den auto;" > < / div >
+
     weitoutiao_content = WebDriverWait(browser, 10).until(EC.presence_of_element_located(
-        (By.CSS_SELECTOR, ".ProseMirror")))
+        (By.CSS_SELECTOR, ".inputPanel")))
     time.sleep(2)
     # weitoutiao_content = WebDriverWait(browser, 10).until(EC.presence_of_element_located(
     #     (By.CSS_SELECTOR, ".ProseMirror")))
@@ -157,22 +159,21 @@ def postWeiToutiao(browser, content):
     weitoutiao_content.send_keys(Keys.ENTER)
     time.sleep(2)
     # selenium——鼠标操作ActionChains：点击、滑动、拖动
-    # 第一步：创建一个鼠标操作的对象
-    action = ActionChains(browser)
-    # 第二步：进行点击动作（事实上不会进行操作，只是添加一个点击的动作）
-    action.click(weitoutiao_content)
-    # 第三步：执行动作
-    action.perform()
-    time.sleep(2)
+    # # 第一步：创建一个鼠标操作的对象
+    # action = ActionChains(browser)
+    # # 第二步：进行点击动作（事实上不会进行操作，只是添加一个点击的动作）
+    # action.click(weitoutiao_content)
+    # # 第三步：执行动作
+    # action.perform()
+    # time.sleep(2)
     # https://blog.csdn.net/MarkAdc/article/details/107204126
     # https://www.cnblogs.com/jasmine0627/p/13094288.html
 
     # 模拟发布按钮
     # https://selenium-python.readthedocs.io/locating-elements.html
 
-    # class ="byte-btn byte-btn-primary byte-btn-size-default byte-btn-shape-square publish-content" type="button" > < span > 发布 < / span > < / button >
-    weitoutiao_send_btn = browser.find_element(By.CSS_SELECTOR,
-                                               ".byte-btn.byte-btn-primary.byte-btn-size-default.byte-btn-shape-square.publish-content")
+    # <div class="sendBtn" style="opacity: 1;">发布</div>
+    weitoutiao_send_btn = browser.find_element(By.CSS_SELECTOR, ".sendBtn")
     time.sleep(2)
     if weitoutiao_send_btn is None:
         print("submit is miss")
@@ -185,22 +186,22 @@ def postWeiToutiao(browser, content):
     logging.info("push toutiao")
 
 
-def post_sleep_toutiao():
-    sleeptime = random.randint(0, 20)
+def post_sleep_maimai():
+    sleeptime = random.randint(0, 10)
     print(sleeptime)
     time.sleep(sleeptime)
     sys = platform.system()
     if sys == "Windows":
         weibo_driver_path = r"D:\doc\2023\05-third\chromedriver_win32\chromedriver.exe"
-        weibo_coook_path = r"D:\doc\2023\05-third\chromedriver_win32\toutiao.pkl"
-        liunx_weibo_login = "https://mp.toutiao.com"
-        liunx_weibo = "https://mp.toutiao.com"
+        weibo_coook_path = r"D:\doc\2023\05-third\chromedriver_win32\maimai.pkl"
+        liunx_weibo_login = "https://maimai.cn/"
+        liunx_weibo = "https://maimai.cn/"
     else:
         weibo_driver_path = r"/root/bin/chromedriver"
-        weibo_coook_path = r"/root/bin/toutiao.pkl"
+        weibo_coook_path = r"/root/bin/maimai.pkl"
         # weibo_coook_txt = r"/root/bin/toutiao.txt"
-        liunx_weibo_login = "https://mp.toutiao.com"
-        liunx_weibo = "https://mp.toutiao.com"
+        liunx_weibo_login = "https://maimai.cn/"
+        liunx_weibo = "https://maimai.cn/"
 
     liunx_msg = query_sleep_content()
 
@@ -208,7 +209,7 @@ def post_sleep_toutiao():
         driver = init_browser(weibo_driver_path)
         gen_url_Cookies(driver, weibo_coook_path, liunx_weibo_login)
         loginWithCookies(driver, weibo_coook_path, liunx_weibo)
-        postWeiToutiao(driver, liunx_msg)
+        post_maimai_msg(driver, liunx_msg)
         # 脚本退出时，一定要主动调用 driver.quit !!!
         # https://cloud.tencent.com/developer/article/1404558
         driver.quit()
@@ -221,7 +222,7 @@ def post_sleep_toutiao():
 
 
 if __name__ == '__main__':
-    post_sleep_toutiao()
+    post_sleep_maimai()
     # init_log()
     # driver_path = r"D:\doc\2023\05-third\chromedriver_win32\chromedriver.exe"
     # coook_path = r"D:\doc\2023\05-third\chromedriver_win32\cookies.pkl"
