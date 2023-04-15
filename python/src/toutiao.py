@@ -19,6 +19,7 @@ import datetime
 import time
 import random
 
+
 # 获取发表内容
 def query_sleep_content():
     current_date = datetime.date.today()
@@ -60,7 +61,7 @@ def init_browser(chromedriver_path: str):
         # chrome_options.add_argument('--no-sandbox')
         # chrome_options.add_argument('--disable-gpu')
         # chrome_options.add_argument('--disable-dev-shm-usage')
-        #chrome_options.add_argument('headless')
+        # chrome_options.add_argument('headless')
         chrome_options.add_argument('no-sandbox')
         chrome_options.add_argument('disable-dev-shm-usage')
 
@@ -111,9 +112,9 @@ def gen_url_Cookies(driver, cook_path: str, url: str):
     pickle.dump(cookies, open(cook_path, "wb"))
 
     jsCookies = json.dumps(cookies)  # 转换成字符串保存
-    with open(r"/root/bin/cookies.txt", 'w') as f:
-        f.write(jsCookies)
-    print("dump cookies succed")
+    # with open(r"/root/bin/cookies.txt", 'w') as f:
+    #     f.write(jsCookies)
+    print("dump cookies succed" + jsCookies)
 
 
 def loginWithCookies(browser, cookpath, url):
@@ -125,40 +126,34 @@ def loginWithCookies(browser, cookpath, url):
         browser.add_cookie(cookie)
     time.sleep(1)
     browser.refresh()
-    print("loginWithCookies")
+    print("toutiao loginWithCookies")
 
 
-# 格言提醒
-def post_weibo(browser, content):
+# 今日头条：格言提醒
+def postWeiToutiao(browser, content):
+    print("postWeiToutiao begin")
     # load
-    browser.get("https://weibo.com/")
+    browser.get("https://mp.toutiao.com/profile_v3/weitoutiao/publish")
     time.sleep(5)
-    print(r"get https://weibo.com is ok")
-    logging.debug(r"get https://weibo.com is ok")
-    # 微头条内容框
-    # presence_of_element_located（locator）：判断某个元素是否存在DOM中
-    # 如果判断条件成立，就执行下一步，否则继续等待，直到超过设定的最长等待时间，然后抛出TimeOutEcpection的异常信息。
-    weitoutiao_content = WebDriverWait(browser, 15).until(EC.presence_of_element_located(
-        (By.CSS_SELECTOR, ".Form_input_2gtXx")))
+    # 填写内容
+    weitoutiao_content = WebDriverWait(browser, 10).until(EC.presence_of_element_located(
+        (By.CSS_SELECTOR, ".ProseMirror")))
     # CSS选择器 https://www.w3school.com.cn/cssref/css_selectors.asp
     # https://github.com/seleniumhq/selenium/issues/1480
     # div CLASS .intro id .
-    time.sleep(5)
     weitoutiao_content.send_keys(content)
-    print("write msg")
-    logging.debug(r"write msg")
     # https://blog.csdn.net/weixin_44065501/article/details/89314538
     weitoutiao_content.send_keys(Keys.ENTER)
-    print("step1-------------")
+    time.sleep(4)
 
-    # 点击发布
-    # 鼠标动作模拟操作：https://my.oschina.net/u/4273790/blog/3807807
-    # actions = ActionChains(browser)
+    # 模拟发布按钮
+    # https://selenium-python.readthedocs.io/locating-elements.html
     weitoutiao_send_btn = browser.find_element(By.CSS_SELECTOR,
-                                               ".woo-button-main.woo-button-flat.woo-button-primary.woo-button-m.woo-button-round.Tool_btn_2Eane")  # 双击按钮
-    time.sleep(2)
+                                               ".byte-btn.byte-btn-primary.byte-btn-size-default.byte-btn-shape-square.publish-content")
+    time.sleep(3)
     weitoutiao_send_btn.send_keys(Keys.SPACE)
-    print(r"push {content} succed")
+    print("push toutiao")
+    logging.info("push toutiao")
 
 
 def post_sleep_toutiao():
@@ -168,23 +163,23 @@ def post_sleep_toutiao():
     sys = platform.system()
     if sys == "Windows":
         weibo_driver_path = r"D:\doc\2023\05-third\chromedriver_win32\chromedriver.exe"
-        weibo_coook_path = r"D:\doc\2023\05-third\chromedriver_win32\cookies.pkl"
-        liunx_weibo_login = "https://weibo.com/newlogin"
-        liunx_weibo = "https://weibo.com/"
+        weibo_coook_path = r"D:\doc\2023\05-third\chromedriver_win32\toutiao.pkl"
+        liunx_weibo_login = "https://mp.toutiao.com"
+        liunx_weibo = "https://mp.toutiao.com"
     else:
         weibo_driver_path = r"/root/bin/chromedriver"
         weibo_coook_path = r"/root/bin/toutiao.pkl"
-        weibo_coook_txt = r"/root/bin/toutiao.txt"
+        # weibo_coook_txt = r"/root/bin/toutiao.txt"
         liunx_weibo_login = "https://mp.toutiao.com"
-        liunx_weibo = "https://weibo.com/"
+        liunx_weibo = "https://mp.toutiao.com"
 
     liunx_msg = query_sleep_content()
 
     try:
         driver = init_browser(weibo_driver_path)
         gen_url_Cookies(driver, weibo_coook_path, liunx_weibo_login)
-        # loginWithCookies(driver, weibo_coook_path, liunx_weibo)
-        # post_weibo(driver, liunx_msg)
+        loginWithCookies(driver, weibo_coook_path, liunx_weibo)
+        postWeiToutiao(driver, liunx_msg)
         # 脚本退出时，一定要主动调用 driver.quit !!!
         # https://cloud.tencent.com/developer/article/1404558
         driver.quit()
