@@ -24,7 +24,16 @@ Google Chrome 113.0.5672.37 beta
 chromedriver --version
 ChromeDriver 113.0.5672.24 (65f30d4e8051264233c679c7cd3743679f15339d-refs/branch-heads/5672@{#243})
 
-### 奇迹提问4：
+### 奇迹提问5  在发表文章 和登录时候提示验证码
+
+what：
+why：
+https://github.com/weizhimeng/selenium-Sliding-verification-code
+https://blog.csdn.net/lemonbit/article/details/112300728
+how：
+
+
+### 奇迹提问4： 解决
 
 selenium滑动到元素可见状态
 
@@ -285,6 +294,30 @@ selenium.common.exceptions.ElementClickInterceptedException: Message: element cl
 python 利用selenium模拟登录帐号验证网站并获取cookie
 class="woo-button-main woo-button-flat woo-button-primary woo-button-m woo-button-round Tool_btn_2Eane"
 
-3. 
+---B---
 
- raise TimeoutException(message, screen, stacktrace)
+<div placeholder="有什么想和大家分享的？" contenteditable="true" class="bili-rich-textarea__inner empty" style="font-size: 15px; line-height: 24px; min-height: 24px;" data-listener-added_b42a6bd6="true">​
+</div>
+
+<div class="bili-dyn-publishing__action launcher disabled">
+        发布
+      </div>
+<div class="bili-dyn-publishing__action launcher">
+        发布
+      </div>
+
+- 如何通过selenium获取到弹窗里的按钮并模拟点击确定或取消？
+ selenium实践-如何验证警告、确认、提示信息
+https://blog.csdn.net/whowhowhoisimportant/article/details/115708083
+How to Handle
+
+<button class="bili-dyn-specification-popup__btn bili-button primary bili-button--medium">
+        确认并发送  
+      </button>
+
+selenium 自动化 携带cookies模拟登陆哔哩哔哩并发送弹幕和评论（解决多窗口切换、规避检测、评论无法输入等问题
+https://blog.csdn.net/m0_50944918/article/details/112148216
+
+How to switch to frames in Selenium?
+
+https://www.cnblogs.com/hiyong/p/14163153.html

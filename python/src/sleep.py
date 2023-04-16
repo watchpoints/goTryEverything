@@ -3,6 +3,7 @@ import weibo
 import os
 import toutiao
 import maimai
+import douyu
 
 # easy sleep
 def show_sleep():
@@ -12,5 +13,8 @@ def show_sleep():
     weibo.post_sleep_weibo()
 
     toutiao.post_sleep_toutiao()  # easy sleep
+    # 斗鱼
+    douyu.post_sleep_douyu()
+
 
     maimai.post_sleep_maimai()
