@@ -11,7 +11,7 @@ import (
 	"os/exec"
 
 	"github.com/gen2brain/beeep"
-	"github.com/go-toast/toast"
+	//"github.com/go-toast/toast"
 	"github.com/jakecoffman/cron"
 )
 
@@ -77,7 +77,7 @@ func NotifyStadnUp() {
 	}
 }
 func NotifyStadnUpWindos() {
-
+    /*
 	notification := toast.Notification{
 		AppID:   "Microsoft.Windows.Shell.RunDialog",
 		Title:   "站立提醒",
@@ -92,7 +92,7 @@ func NotifyStadnUpWindos() {
 
 	if err != nil {
 		log.Fatalln(err)
-	}
+	}*/
 }
 
 //ShutDownPc cmd
