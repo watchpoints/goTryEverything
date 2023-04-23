@@ -28,7 +28,7 @@ type sentence struct {
 }
 
 // 发送每日一句
-func everydaysen() {
+func EverydaySleep() {
 	req, fxurl := getsen()
 	if req.Content == "" {
 		return
@@ -140,8 +140,3 @@ func templatepost(access_token string, reqdata string, fxurl string, templateid 
 
 	fmt.Println(string(body))
 }
-
-// func TestEveryday(t *testing.T) {
-// 	log.Println("start GoTryEverthing")
-// 	everydaysen()
-// }

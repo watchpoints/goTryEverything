@@ -1,4 +1,14 @@
 
+单元测试
+
+testing: warning: no tests to run
+go help testfunc
+
+A test function is one named TestXxx (where Xxx does not start with a
+lower case letter) and should have the signature,
+
+        func TestXxx(t *testing.T) { ... }
+
 
 export GOPROXY=https://proxy.golang.com.cn,direct
 

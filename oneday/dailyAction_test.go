@@ -4,5 +4,6 @@ import "testing"
 
 func TestNotifyStadnUp(t *testing.T) {
 	//NotifyStadnUpWindos()
-	PutDownComputerAndPhone()
+	//PutDownComputerAndPhone()
+	SleepTrip()
 }

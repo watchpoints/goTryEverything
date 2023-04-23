@@ -39,7 +39,7 @@ func start_job_server() {
 
 func main() {
 	log.Println("start GoTryEverthing")
-	//go start_job_server()
+	go start_job_server()
 	start_http_server() //forever
 	log.Println("stop GoTryEverthing")
 
