@@ -1,5 +1,18 @@
 
 
+问：go 下载慢
+
+ 配置 GOPROXY 环境变量
+export GOPROXY=https://proxy.golang.com.cn,direct
+一个全球代理
+为 Go 模块而生
+
+
+问：go 是如何管理依赖的？
+
+https://blog.csdn.net/weixin_39003229/article/details/97638573
+
+
 ## 部署运维
 
 ### 环境安装 
@@ -14,6 +27,9 @@ https://gitee.com/wang_cyi/goTryEverything
 1.  设置开启启动
 
 window11---任务计划程序--当计算机启动时 --D:\local\goTryEverything.exe
+
+
+go mod tidy
 
 
 
