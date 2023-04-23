@@ -1,19 +1,20 @@
-package main
+package wechat
 
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/tidwall/gjson"
 	"io/ioutil"
 	"net/http"
 	"strings"
+	"testing"
 
+	"github.com/tidwall/gjson"
 )
 
 var (
 	APPID          = "wxb547e7b33f80bb5a"
 	APPSECRET      = "4ff76e73733313eb2f2a88789cc6c4db"
-	SentTemplateID = "8n_ebZSs6EV9tKJ8K484ISdVcntGO4A-TDZ23mu0RJw"	//每日一句的模板ID，替换成自己的
+	SentTemplateID = "8n_ebZSs6EV9tKJ8K484ISdVcntGO4A-TDZ23mu0RJw" //每日一句的模板ID，替换成自己的
 )
 
 type token struct {
@@ -25,10 +26,6 @@ type sentence struct {
 	Content     string `json:"content"`
 	Note        string `json:"note"`
 	Translation string `json:"translation"`
-}
-
-func main() {
-	everydaysen()
 }
 
 //发送每日一句
@@ -52,7 +49,6 @@ func everydaysen() {
 		templatepost(access_token, reqdata, fxurl, SentTemplateID, v.Str)
 	}
 }
-
 
 //获取微信accesstoken
 func getaccesstoken() string {
@@ -171,13 +167,6 @@ func getweather(city string) (string, string, string, string) {
 	return day, wea, tem, air_tips
 }
 
-//发送天气
-func sendweather(access_token, city, openid string) {
-	day, wea, tem, air_tips := getweather(city)
-	if day == "" || wea == "" || tem == ""|| air_tips == "" {
-		return
-	}
-	reqdata := "{\"city\":{\"value\":\"城市：" + city + "\", \"color\":\"#0000CD\"}, \"day\":{\"value\":\"" + day + "\"}, \"wea\":{\"value\":\"天气：" + wea + "\"}, \"tem1\":{\"value\":\"平均温度：" + tem + "\"}, \"air_tips\":{\"value\":\"tips：" + air_tips + "\"}}"
-	//fmt.Println(reqdata)
-	templatepost(access_token, reqdata, "http://47.105.41.130:9999", WeatTemplateID, openid)
+func Testeverydaysen(t *testing.T) {
+	everydaysen()
 }
