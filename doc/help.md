@@ -1,6 +1,9 @@
 
 
-问：go 下载慢
+export GOPROXY=https://proxy.golang.com.cn,direct
+
+
+问：go 下载慢 ，必须设置代理， 云主机 必须设置代理i板瓦工必须设置代理
 
  配置 GOPROXY 环境变量
 export GOPROXY=https://proxy.golang.com.cn,direct

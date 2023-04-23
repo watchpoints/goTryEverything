@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"strings"
 	"testing"
@@ -28,7 +29,7 @@ type sentence struct {
 	Translation string `json:"translation"`
 }
 
-//发送每日一句
+// 发送每日一句
 func everydaysen() {
 	req, fxurl := getsen()
 	if req.Content == "" {
@@ -50,7 +51,7 @@ func everydaysen() {
 	}
 }
 
-//获取微信accesstoken
+// 获取微信accesstoken
 func getaccesstoken() string {
 	url := fmt.Sprintf("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=%v&secret=%v", APPID, APPSECRET)
 	resp, err := http.Get(url)
@@ -75,7 +76,7 @@ func getaccesstoken() string {
 	return token.AccessToken
 }
 
-//获取每日一句
+// 获取每日一句
 func getsen() (sentence, string) {
 	resp, err := http.Get("http://open.iciba.com/dsapi/?date")
 	sent := sentence{}
@@ -100,7 +101,7 @@ func getsen() (sentence, string) {
 	return sent, fenxiangurl
 }
 
-//获取关注者列表
+// 获取关注者列表
 func getflist(access_token string) []gjson.Result {
 	url := "https://api.weixin.qq.com/cgi-bin/user/get?access_token=" + access_token + "&next_openid="
 	resp, err := http.Get(url)
@@ -118,7 +119,7 @@ func getflist(access_token string) []gjson.Result {
 	return flist
 }
 
-//发送模板消息
+// 发送模板消息
 func templatepost(access_token string, reqdata string, fxurl string, templateid string, openid string) {
 	url := "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" + access_token
 
@@ -142,31 +143,7 @@ func templatepost(access_token string, reqdata string, fxurl string, templateid 
 	fmt.Println(string(body))
 }
 
-//获取天气
-func getweather(city string) (string, string, string, string) {
-	url := fmt.Sprintf("https://www.tianqiapi.com/api?version=%s&city=%s", WeatherVersion, city)
-	resp, err := http.Get(url)
-	if err != nil {
-		fmt.Println("获取天气失败", err)
-		return "", "", "", ""
-	}
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		fmt.Println("读取内容失败", err)
-		return "", "", "", ""
-	}
-
-	data := gjson.Get(string(body), "data").Array()
-	thisday := data[0].String()
-	day := gjson.Get(thisday, "day").Str
-	wea := gjson.Get(thisday, "wea").Str
-	tem := gjson.Get(thisday, "tem").Str
-	//tem2 := gjson.Get(thisday, "tem2").Str
-	air_tips := gjson.Get(thisday, "air_tips").Str
-	return day, wea, tem, air_tips
-}
-
 func Testeverydaysen(t *testing.T) {
+	log.Println("start GoTryEverthing")
 	everydaysen()
 }

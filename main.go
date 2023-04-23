@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
 	"github.com/watchpoints/goTryEverything/oneday"
 	"github.com/watchpoints/goTryEverything/wechat"
 )
@@ -12,12 +13,12 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "<h1>hello world</h1>")
 }
 
-//http://localhost/
+// http://localhost/
 func start_http_server() {
 	//构建http服务
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", IndexHandler)
-	mux.Handle("/wechat",&wechat.WeCHatHandler{})
+	mux.Handle("/wechat", &wechat.WeCHatHandler{})
 
 	fmt.Println("TryEverthing start ")
 	ip := "localhost:80"
