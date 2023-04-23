@@ -43,6 +43,10 @@ def init_browser(chromedriver_path: str):
     chrome_options.add_argument("--disable-extensions")
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_argument('window-size=1920x1480')
+    # 忽略无用的日志
+    # https://www.cnblogs.com/pinkhurley/p/15584505.html
+    chrome_options.add_experimental_option("excludeSwitches", ['enable-automation', 'enable-logging'])
+
     sys = platform.system()
     print(sys)
     if sys == "Windows":

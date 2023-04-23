@@ -111,8 +111,8 @@ def gen_url_Cookies(driver, cook_path: str, url: str):
     pickle.dump(cookies, open(cook_path, "wb"))
 
     jsCookies = json.dumps(cookies)  # 转换成字符串保存
-    with open(r"/root/bin/cookies.txt", 'w') as f:
-        f.write(jsCookies)
+    # with open(r"/root/bin/cookies.txt", 'w') as f:
+    #     f.write(jsCookies)
     print("dump cookies succed")
 
 

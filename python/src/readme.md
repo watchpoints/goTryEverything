@@ -321,3 +321,7 @@ https://blog.csdn.net/m0_50944918/article/details/112148216
 How to switch to frames in Selenium?
 
 https://www.cnblogs.com/hiyong/p/14163153.html
+
+
+
+https://github.com/SK-415/HarukaBot/issues/335

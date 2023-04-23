@@ -1,4 +1,12 @@
 
+
+用 go 写一个爬虫 （why 不用python呢）
+https://juejin.cn/post/6949557048203804709
+https://juejin.cn/post/6949557048203804709
+写一个发帖程序 用 go + Selenium ?
+
+
+
 单元测试
 
 testing: warning: no tests to run
