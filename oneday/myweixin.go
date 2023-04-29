@@ -1,4 +1,5 @@
-package wechat
+// dailyTask
+package oneday
 
 import (
 	"encoding/json"
@@ -28,7 +29,7 @@ type sentence struct {
 }
 
 // 发送每日一句
-func everydaysen() {
+func EverydaySleep() {
 	req, fxurl := getsen()
 	if req.Content == "" {
 		return

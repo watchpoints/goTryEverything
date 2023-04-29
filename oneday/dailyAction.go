@@ -11,7 +11,6 @@ import (
 	"os/exec"
 
 	"github.com/gen2brain/beeep"
-	"github.com/watchpoints/goTryEverything/wechat"
 
 	//"github.com/go-toast/toast"
 	"github.com/jakecoffman/cron"
@@ -50,7 +49,7 @@ var JobPutDownComputerAndPhone = func() {
 }
 
 var SleepTrip = func() {
-	wechat.EverydaySleep()
+	EverydaySleep()
 }
 
 func (da *DailyAction) StartCron() {

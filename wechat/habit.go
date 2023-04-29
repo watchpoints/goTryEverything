@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
 	"github.com/silenceper/wechat"
 	"github.com/silenceper/wechat/message"
 )
-//WeCHatHandler
-type WeCHatHandler struct {
 
+// WeCHatHandler
+type WeCHatHandler struct {
 }
 
 func (wx *WeCHatHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
