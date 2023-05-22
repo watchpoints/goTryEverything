@@ -53,6 +53,7 @@
 - 打卡发表内容
 - 看新闻，点赞
 
+----------------------------------------------------
 ### to do 
 
 - 如何chatgpt
@@ -65,6 +66,9 @@ https://github.com/goldfishh/chatgpt-tool-hub
 https://github.com/feiweiwei/WeixinSpider
 
 - python 微信公共号
+
+简单的支持来哦。增加写日志和加油
+
 https://www.wechatpy.org/
 https://github.com/51ak/ChatGPT_Weixin
 - http 接受go发送消息 发送到其他平台上。

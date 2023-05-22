@@ -1,9 +1,16 @@
-### 奇迹提问5  安装部署
+### 奇迹提问5  python程序 支持微信公共号
+
+ModuleNotFoundError: No module named 'Crypto'
+pip install  pycryptodome
+
+https://github.com/wechatpy/wechatpy/blob/master/examples/echo/app.py
+
 
  git clone git@github.com:wangcy6/chatgpt-on-wechat.git
 cd chatgpt-on-wechat/
 pip3 install -r requirements.txt
 cp config-template.json config.json
+python3 app.py
 
 4. Railway部署 (✅推荐)
 Railway每月提供5刀和最多500小时的免费额度。
@@ -11,6 +18,8 @@ Railway每月提供5刀和最多500小时的免费额度。
 进入 Railway。
 点击 Deploy Now 按钮。
 设置环境变量来重载程序运行的参数，例如open_ai_api_key, character_desc。
+
+https://github.com/zhayujie/chatgpt-on-wechat/blob/master/channel/wechatmp/README.md
 
 https://github.com/zhayujie/chatgpt-on-wechat/blob/master/channel/wechatmp/README.md
 
